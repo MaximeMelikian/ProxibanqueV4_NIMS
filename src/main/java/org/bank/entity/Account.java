@@ -28,12 +28,12 @@ public class Account implements Serializable {
 	private double balance;
 	private String creationDate;
 
-	 @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
-	 @JoinColumn(name = "client_id")
-	 private Customer customer;
-     @OneToOne
-     @JoinColumn(name = "creditcard_id",unique=true)
-	 private CreditCard creditCard;
+//	 @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+//	 @JoinColumn(name = "client_id")
+//	 private Customer customer;
+//     @OneToOne
+//     @JoinColumn(name = "creditcard_id",unique=true)
+//	 private CreditCard creditCard;
 	 
 	// Constructeur
 
@@ -45,7 +45,7 @@ public class Account implements Serializable {
 		this.accountNumber = accountNumber;
 		this.balance = balance;
 		this.creationDate = creationDate;
-	    this.customer = customer;
+	    //this.customer = customer;
 	}
 
 	// Getters and Setters
@@ -81,20 +81,20 @@ public class Account implements Serializable {
 		this.creationDate = creationDate;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	//toString
-
-	@Override
-	public String toString() {
-		return "Account [idAccount=" + idAccount + ", accountNumber=" + accountNumber + ", balance=" + balance
-				+ ", creationDate=" + creationDate + ", customer=" + customer + "]";
-	}
+//	public Customer getCustomer() {
+//		return customer;
+//	}
+//
+//	public void setCustomer(Customer customer) {
+//		this.customer = customer;
+//	}
+//
+//	//toString
+//
+//	@Override
+//	public String toString() {
+//		return "Account [idAccount=" + idAccount + ", accountNumber=" + accountNumber + ", balance=" + balance
+//				+ ", creationDate=" + creationDate + ", customer=" + customer + "]";
+//	}
 
 }

@@ -17,8 +17,8 @@ public class CreditCard implements Serializable{
 	private Long idCard;
 	private String type;
 	
-	@OneToOne(mappedBy = "creditCard")
-	private Account account;
+//	@OneToOne(mappedBy = "creditCard")
+//	private Account account;
 
 	// Constructeur
 	

@@ -24,12 +24,12 @@ public class Customer {
 	private String telephone;
 	private String email;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST})
-	@JoinColumn(name = "advisor_id")
-	private Advisor advisor;
-
-	@OneToMany(mappedBy = "customer",cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
-	private List<Account> accountList;
+//	@ManyToOne(cascade = { CascadeType.PERSIST})
+//	@JoinColumn(name = "advisor_id")
+//	private Advisor advisor;
+//
+//	@OneToMany(mappedBy = "customer",cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+//	private List<Account> accountList;
 
 	// Constructeur
 
@@ -131,21 +131,21 @@ public class Customer {
 		this.email = email;
 	}
 
-	public Advisor getAdvisor() {
-		return advisor;
-	}
+//	public Advisor getAdvisor() {
+//		return advisor;
+//	}
 
-	public void setAdvisor(Advisor advisor) {
-		this.advisor = advisor;
-	}
-
-	public List<Account> getAccountList() {
-		return accountList;
-	}
-
-	public void setAccountList(List<Account> accountList) {
-		this.accountList = accountList;
-	}
+//	public void setAdvisor(Advisor advisor) {
+//		this.advisor = advisor;
+//	}
+//
+//	public List<Account> getAccountList() {
+//		return accountList;
+//	}
+//
+//	public void setAccountList(List<Account> accountList) {
+//		this.accountList = accountList;
+//	}
 
 	@Override
 	public String toString() {
