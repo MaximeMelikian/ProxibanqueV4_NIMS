@@ -1,7 +1,5 @@
 package org.bank.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -28,7 +26,8 @@ public class Account {
 	private double balance;
 	private String creationDate;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	//@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@ManyToOne(cascade = { CascadeType.PERSIST})
 	@JoinColumn(name = "client_id")
 	private Customer customer;
 	@OneToOne
