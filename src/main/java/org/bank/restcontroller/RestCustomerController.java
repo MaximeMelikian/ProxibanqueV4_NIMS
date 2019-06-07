@@ -40,7 +40,7 @@ public class RestCustomerController {
 
 	@GetMapping
 	public List<Customer> getAllCustomers() {
-		return icustomerserv.getList();
+		return icustomerserv.getListCustomer();
 	}
 
 	@PutMapping

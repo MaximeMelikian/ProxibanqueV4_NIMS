@@ -11,7 +11,11 @@ public class Particular extends Customer {
 
 	public Particular() {
 		super();
-		
+
+	}
+
+	public Particular(String firstname, String lastname) {
+		super(firstname, lastname);
 	}
 
 	public Particular(Long id, String firstname, String lastname, String address, String postalCode, String city,

@@ -29,7 +29,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	}
 
 	@Override
-	public List<Customer> getList() {
+	public List<Customer> getListCustomer() {
 
 		return iCustomerRepo.findAll();
 	}

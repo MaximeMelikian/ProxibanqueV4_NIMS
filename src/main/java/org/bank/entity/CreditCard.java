@@ -44,7 +44,23 @@ public class CreditCard{
 		this.account = account;
 	}
 
+	@Override
+	public String toString() {
+		return "CreditCard [type=" + type + "]";
+	}
+
+
 	// Constructeur
 	
 	
+	public CreditCard() {
+		super();
+	}
+	
+	
+	public CreditCard(String type) {
+		super();
+		this.type = type;
+	}
+
 }

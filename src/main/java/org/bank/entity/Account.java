@@ -28,16 +28,28 @@ public class Account {
 	private double balance;
 	private String creationDate;
 
-	 @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
-	 @JoinColumn(name = "client_id")
-	 private Customer customer;
-     @OneToOne
-     @JoinColumn(name = "creditcard_id",unique=true)
-	 private CreditCard creditCard;
-	 
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@JoinColumn(name = "client_id")
+	private Customer customer;
+	@OneToOne
+	@JoinColumn(name = "creditcard_id", unique = true)
+	private CreditCard creditCard;
+
 	// Constructeur
 
 	public Account() {
+	}
+
+	public Account(double balance) {
+		super();
+		this.balance = balance;
+	}
+
+	public Account(String accountNumber, double balance, String creationDate) {
+		super();
+		this.accountNumber = accountNumber;
+		this.balance = balance;
+		this.creationDate = creationDate;
 	}
 
 	public Account(Long idAccount, String accountNumber, double balance, String creationDate, Customer customer) {
@@ -45,7 +57,7 @@ public class Account {
 		this.accountNumber = accountNumber;
 		this.balance = balance;
 		this.creationDate = creationDate;
-	    //this.customer = customer;
+		// this.customer = customer;
 	}
 
 	// Getters and Setters
@@ -89,7 +101,16 @@ public class Account {
 		this.customer = customer;
 	}
 
-	//toString
+	public CreditCard getCreditCard() {
+		return creditCard;
+	}
+	
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
+
+	// toString
+
 
 	@Override
 	public String toString() {
