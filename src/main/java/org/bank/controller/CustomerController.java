@@ -32,6 +32,22 @@ public class CustomerController {
 
 	}
 
+	// Affichage des informations du client
+	@RequestMapping(value = "/showcustomer")
+	public String showcustomer(Long id, ModelMap modelMap) {
+		Customer customer0 = iCustomerRepository.findById(id).get();
+		modelMap.addAttribute("cus", customer0);
+//		 Ajout de la liste des comptes du client
+//		List<Compte> listeComptes = iCompteService.afficherComptesClient(idClient);
+//		for (Compte compte : listeComptes) {
+//			LOGGER.info("INFORMATION ID "+compte.getIdCompte()+" Solde "+compte.getSolde());			
+//		}
+//		modelMap.addAttribute("comptes", listeComptes);
+		String banane = "Banane";
+		modelMap.addAttribute("bananeInput", banane);
+		return "05_AfficherClient";
+	}
+	
 	public String deleteClient(@RequestParam("idCustomer") Long idCustomer, ModelMap modelMap) {
 		LOGGER.debug("delete customer" + idCustomer);
 		iCustomerRepository.deleteById(idCustomer);

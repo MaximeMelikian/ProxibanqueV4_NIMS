@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class CreditCard implements Serializable{
+public class CreditCard{
 
 	
 	@Id
@@ -17,9 +17,34 @@ public class CreditCard implements Serializable{
 	private Long idCard;
 	private String type;
 	
-//	@OneToOne(mappedBy = "creditCard")
-//	private Account account;
+	@OneToOne(mappedBy = "creditCard")
+	private Account account;
+
+	public Long getIdCard() {
+		return idCard;
+	}
+
+	public void setIdCard(Long idCard) {
+		this.idCard = idCard;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
 
 	// Constructeur
+	
 	
 }

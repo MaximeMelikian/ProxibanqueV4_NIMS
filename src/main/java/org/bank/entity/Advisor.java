@@ -6,13 +6,16 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-public class Advisor implements Serializable{
+public class Advisor{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,15 +25,16 @@ public class Advisor implements Serializable{
 	private String login;
 	private String password;
 
-//	@OneToMany(mappedBy = "advisor", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
-//	private Set<Customer> setCustomer = new HashSet<Customer>();
-//constructeur
+	@JsonIgnore
+	@OneToMany(mappedBy = "advisor", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	private Set<Customer> setCustomer = new HashSet<Customer>();
+	
+//	constructeur
 	public Advisor() {
 	}
 	
 	
-	public Advisor(Long idAdvisor, String fisrtName, String lastName, String login, String password) {
-		this.idAdvisor = idAdvisor;
+	public Advisor( String fisrtName, String lastName, String login, String password) {
 		this.fisrtName = fisrtName;
 		this.lastName = lastName;
 		this.login = login;
@@ -99,21 +103,21 @@ public class Advisor implements Serializable{
 	}
 
 
-//	public Set<Customer> getSetCustomer() {
-//		return setCustomer;
-//	}
-//
-//
-//	public void setSetCustomer(Set<Customer> setCustomer) {
-//		this.setCustomer = setCustomer;
-//	}
-//
-//
-//	@Override
-//	public String toString() {
-//		return "Advisor [idAdvisor=" + idAdvisor + ", fisrtName=" + fisrtName + ", lastName=" + lastName + ", login="
-//				+ login + ", password=" + password + ", setCustomer=" + setCustomer + "]";
-//	}
+	public Set<Customer> getSetCustomer() {
+		return setCustomer;
+	}
+
+
+	public void setSetCustomer(Set<Customer> setCustomer) {
+		this.setCustomer = setCustomer;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Advisor [idAdvisor=" + idAdvisor + ", fisrtName=" + fisrtName + ", lastName=" + lastName + ", login="
+				+ login + ", password=" + password + ", setCustomer=" + setCustomer + "]";
+	}
 
 	
 }

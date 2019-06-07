@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,8 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Customer {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -24,12 +28,13 @@ public class Customer {
 	private String telephone;
 	private String email;
 
-//	@ManyToOne(cascade = { CascadeType.PERSIST})
-//	@JoinColumn(name = "advisor_id")
-//	private Advisor advisor;
-//
-//	@OneToMany(mappedBy = "customer",cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
-//	private List<Account> accountList;
+	@ManyToOne(cascade = { CascadeType.PERSIST})
+	@JoinColumn(name = "advisor_id")
+	private Advisor advisor;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "customer",cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	private List<Account> accountList;
 
 	// Constructeur
 
@@ -62,9 +67,11 @@ public class Customer {
 		this.city = city;
 		this.telephone = telephone;
 		this.email = email;
-		// this.advisor = advisor;
-		// this.accountList = accountList;
+		 this.advisor = advisor;
+		 this.accountList = accountList;
 	}
+	
+	
 
 	// Getters and Setters
 	public Long getId() {
@@ -131,21 +138,21 @@ public class Customer {
 		this.email = email;
 	}
 
-//	public Advisor getAdvisor() {
-//		return advisor;
-//	}
+	public Advisor getAdvisor() {
+		return advisor;
+	}
 
-//	public void setAdvisor(Advisor advisor) {
-//		this.advisor = advisor;
-//	}
-//
-//	public List<Account> getAccountList() {
-//		return accountList;
-//	}
-//
-//	public void setAccountList(List<Account> accountList) {
-//		this.accountList = accountList;
-//	}
+	public void setAdvisor(Advisor advisor) {
+		this.advisor = advisor;
+	}
+
+	public List<Account> getAccountList() {
+		return accountList;
+	}
+
+	public void setAccountList(List<Account> accountList) {
+		this.accountList = accountList;
+	}
 
 	@Override
 	public String toString() {

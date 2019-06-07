@@ -37,7 +37,7 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td><a href="afficherclient?idClient=${cus.id}">Voir</a></td>
+					<td><a href="showcustomer?id=${cus.id}">Afficher</a></td>
 			</c:forEach>
 		</tr>
 	</table>
