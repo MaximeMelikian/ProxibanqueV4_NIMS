@@ -41,4 +41,10 @@ public class AdvisorServiceImpl implements IAdvisorService {
 		iAdvisorRepo.save(advisor);
 	}
 
+	@Override
+	public void deleteAdvisor(Long idAdvisor) {
+		iAdvisorRepo.deleteById(idAdvisor);
+		
+	}
+
 }

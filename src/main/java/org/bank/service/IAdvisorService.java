@@ -14,6 +14,6 @@ public interface IAdvisorService {
 
 	public void updateAdvisor(Advisor updatedAdvisor);
 	
-	
+	public void deleteAdvisor(Long idAdvisor);
 
 }

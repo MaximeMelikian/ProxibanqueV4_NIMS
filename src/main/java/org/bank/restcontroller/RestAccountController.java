@@ -2,8 +2,8 @@ package org.bank.restcontroller;
 
 import java.util.List;
 
-import org.bank.entity.Customer;
-import org.bank.service.ICustomerService;
+import org.bank.entity.Account;
+import org.bank.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,41 +18,41 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/accounts")
 @CrossOrigin(origins = "http://localhost:4200")
-public class RestCustomerController {
+public class RestAccountController {
 
 	@Autowired
-	ICustomerService iCustomerserv;
+	IAccountService iAccountServ;
 
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping
-	public Customer createCustomer(@RequestBody Customer customer) {
-		iCustomerserv.createCustomer(customer);
-		return customer;
+	public Account createAccount(@RequestBody Account account) {
+		iAccountServ.createAccount(account);
+		return account;
 	}
 
 	@GetMapping("/{id}")
-	public Customer getCustomer(@PathVariable("id") Long id) {
-
-		return iCustomerserv.getCustomerById(id);
+	public Account getAccount(@PathVariable("id") Long idAccount) {
+		return iAccountServ.getAccountById(idAccount);
 	}
 
 	@GetMapping
-	public List<Customer> getAllCustomers() {
-		return iCustomerserv.getListCustomer();
+	public List<Account> getAllAccounts() {
+		return iAccountServ.getListAccount();
 	}
 
 	@PutMapping
-	public Customer updateCustomer(@RequestBody Customer updatedCustomer) {
-		iCustomerserv.updateCustomer(updatedCustomer);
-		return iCustomerserv.getCustomerById(updatedCustomer.getId());
+	public Account updateAccount(@RequestBody Account updatedAccount) {
+		iAccountServ.updateAccount(updatedAccount);
+		return iAccountServ.getAccountById(updatedAccount.getIdAccount());
+		
 
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteCustomer(@PathVariable("id") Long id) {
-
-		iCustomerserv.deleteCustomer(id);
+	public void deleteAccount(@PathVariable("id") Long idAccount) {
+		iAccountServ.deleteAccount(idAccount);
 	}
+
 }

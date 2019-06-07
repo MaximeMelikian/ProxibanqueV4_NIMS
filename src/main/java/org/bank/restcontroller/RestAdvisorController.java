@@ -2,8 +2,8 @@ package org.bank.restcontroller;
 
 import java.util.List;
 
-import org.bank.entity.Customer;
-import org.bank.service.ICustomerService;
+import org.bank.entity.Advisor;
+import org.bank.service.IAdvisorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,41 +18,44 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/advisors")
 @CrossOrigin(origins = "http://localhost:4200")
-public class RestCustomerController {
+public class RestAdvisorController {
 
+	// Test url : http://localhost:4200/advisors/(id)
+	
 	@Autowired
-	ICustomerService iCustomerserv;
-
+	IAdvisorService iAdvisorServ;
+	
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping
-	public Customer createCustomer(@RequestBody Customer customer) {
-		iCustomerserv.createCustomer(customer);
-		return customer;
+	public Advisor createAdvisor(@RequestBody Advisor advisor) {
+		iAdvisorServ.createAdvisor(advisor);
+		return advisor;
 	}
 
 	@GetMapping("/{id}")
-	public Customer getCustomer(@PathVariable("id") Long id) {
+	public Advisor getAdvisor(@PathVariable("id") Long id) {
 
-		return iCustomerserv.getCustomerById(id);
+		return iAdvisorServ.getAdvisorById(id);
 	}
 
 	@GetMapping
-	public List<Customer> getAllCustomers() {
-		return iCustomerserv.getListCustomer();
+	public List<Advisor> getAllAdvisors() {
+		return iAdvisorServ.getListAdvisor();
 	}
 
 	@PutMapping
-	public Customer updateCustomer(@RequestBody Customer updatedCustomer) {
-		iCustomerserv.updateCustomer(updatedCustomer);
-		return iCustomerserv.getCustomerById(updatedCustomer.getId());
+	public Advisor updateAdvisor(@RequestBody Advisor updatedAdvisor) {
+		iAdvisorServ.updateAdvisor(updatedAdvisor);
+		return iAdvisorServ.getAdvisorById(updatedAdvisor.getIdAdvisor());
 
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteCustomer(@PathVariable("id") Long id) {
+	public void deleteAdvisor(@PathVariable("id") Long id) {
 
-		iCustomerserv.deleteCustomer(id);
+		iAdvisorServ.deleteAdvisor(id);
 	}
+	
 }
